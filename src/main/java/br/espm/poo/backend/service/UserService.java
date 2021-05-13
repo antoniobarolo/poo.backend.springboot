@@ -3,8 +3,6 @@ package br.espm.poo.backend.service;
 import br.espm.poo.backend.datatype.UserBean;
 import org.springframework.stereotype.Component;
 
-import com.sun.javafx.collections.MappingChange.Map;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
