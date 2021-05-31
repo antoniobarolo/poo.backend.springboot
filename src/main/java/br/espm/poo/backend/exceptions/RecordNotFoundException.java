@@ -1,4 +1,4 @@
-package Exceptions;
+package br.espm.poo.backend.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
