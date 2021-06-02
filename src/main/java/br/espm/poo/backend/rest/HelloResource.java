@@ -9,6 +9,7 @@ import br.espm.poo.backend.datatype.MessageBean;
 @RestController
 public class HelloResource {
 
+	//ou @GetMapping
 	@RequestMapping(path = "/hello")
 	public String hello() {
 		return "Hello World!";
@@ -18,7 +19,6 @@ public class HelloResource {
 	public String html() {
 		return "<h1 style='color:red'>Hello World!</h1>";
 	}
-	
 	
 	@RequestMapping(path = "/mensagem")
 	public MessageBean message() {
