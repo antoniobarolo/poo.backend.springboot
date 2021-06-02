@@ -36,7 +36,7 @@ public class UserResource {
 			throw new RecordNotFoundException(id.toString());
 		}
 
-		return userService.findBy(id);
+		return foundUser;
 	}
 
 	@PostMapping(path = "/users")

@@ -1,6 +1,8 @@
 package br.espm.poo.backend.service;
 
 import br.espm.poo.backend.datatype.UserBean;
+import br.espm.poo.backend.repository.UserRepository;
+
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -26,7 +28,11 @@ public class UserService {
 	}
 	
 	public UserBean findBy(UUID id) {
-		return users.get(id);
+		//return users.get(id);
+		return UserRepository
+			.findById(id.toString())
+			.map(userModel -> UserModel.to())
+			.orElse(null);
 	}
 	
 	public UserBean create(UserBean user) {
