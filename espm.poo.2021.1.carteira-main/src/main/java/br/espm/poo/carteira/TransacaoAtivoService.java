@@ -54,7 +54,7 @@ public class TransacaoAtivoService {
 
         Acao acao = ativoController.acao(empresa.getNome(), sdf.format(agora));
         if (acao == null) {
-            throw new RuntimeException("Acao nao existe: " + sdf.format(agora));
+            throw new RuntimeException("Ação nao existe: " + sdf.format(agora));
         }
 
         TransacaoAtivo tc = new TransacaoAtivo();
