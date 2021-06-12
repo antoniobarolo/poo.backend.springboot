@@ -10,6 +10,7 @@ public class Carteira {
     // private Usuario usuario;
     private BigDecimal saldo;
     private List<TransacaoCambio> transacoesCambio;
+    private List<TransacaoAtivo> transacoesAtivo;
 
     public String getId() {
         return id;
@@ -23,6 +24,10 @@ public class Carteira {
         return transacoesCambio;
     }
 
+    public List<TransacaoAtivo> getTransacoesAtivo() {
+        return transacoesAtivo;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
@@ -33,6 +38,10 @@ public class Carteira {
 
     public void setTransacoesCambio(List<TransacaoCambio> transacoesCambio) {
         this.transacoesCambio = transacoesCambio;
+    }
+
+    public void setTransacoesAtivo(List<TransacaoAtivo> transacoesAtivo) {
+        this.transacoesAtivo = transacoesAtivo;
     }
 
 }
