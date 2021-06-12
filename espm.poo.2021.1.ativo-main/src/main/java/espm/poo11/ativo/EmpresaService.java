@@ -13,7 +13,7 @@ import java.util.stream.StreamSupport;
 public class EmpresaService {
 
     @Autowired
-    private empresaRepository empresaRepository;
+    private EmpresaRepository empresaRepository;
 
     public List<Empresa> listAll() {
         return StreamSupport
