@@ -1,8 +1,8 @@
 package espm.poo11.ativo;
 
-import espm.poo11.cambio.common.controller.CambioController;
-import espm.poo11.cambio.common.datatype.Acao;
-import espm.poo11.cambio.common.datatype.Empresa;
+import espm.poo11.ativo.common.controller.AtivoController;
+import espm.poo11.ativo.common.datatype.Acao;
+import espm.poo11.ativo.common.datatype.Empresa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
