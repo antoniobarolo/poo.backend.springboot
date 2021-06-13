@@ -3,10 +3,17 @@ package br.espm.poo.carteira;
 import br.espm.poo.cambio.common.controller.CambioController;
 import br.espm.poo.cambio.common.datatype.Cotacao;
 import br.espm.poo.cambio.common.datatype.Moeda;
+
+import espm.poo11.ativo.common.controller.AtivoController;
+import espm.poo11.ativo.common.datatype.Acao;
+import espm.poo11.ativo.common.datatype.Empresa;
+
 import br.espm.poo.carteira.common.controller.CarteiraController;
 import br.espm.poo.carteira.common.datatype.Carteira;
-import br.espm.poo.carteira.common.datatype.TransacaoBean;
+import br.espm.poo.carteira.common.datatype.TransacaoCambioBean;
 import br.espm.poo.carteira.common.datatype.TransacaoCambio;
+import br.espm.poo.carteira.common.datatype.TransacaoAtivoBean;
+import br.espm.poo.carteira.common.datatype.TransacaoAtivo;
 import br.espm.poo.carteira.common.datatype.TransacaoTipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.EnableFeignClients;
@@ -19,7 +26,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-@EnableFeignClients(basePackages = "br.espm.poo.cambio.common.controller")
+@EnableFeignClients(basePackages = {"br.espm.poo.cambio.common.controller", "espm.poo11.ativo.common.controller"})
 @RestController
 public class CarteiraResource implements CarteiraController {
 
@@ -28,6 +35,9 @@ public class CarteiraResource implements CarteiraController {
 
     @Autowired
     private TransacaoCambioService transacaoCambioService;
+
+    @Autowired
+    private TransacaoAtivoService transacaoAtivoService;
 
     @Override
     public List<Carteira> carteiras() {
@@ -47,13 +57,23 @@ public class CarteiraResource implements CarteiraController {
     }
 
     @Override
-    public TransacaoCambio cambioComprar(String idCarteira, TransacaoBean bean) {
+    public TransacaoCambio cambioComprar(String idCarteira, TransacaoCambioBean bean) {
         return transacaoCambioService.comprar(idCarteira, bean);
     }
 
     @Override
-    public TransacaoCambio cambioVender(String idCarteira, TransacaoBean bean) {
+    public TransacaoCambio cambioVender(String idCarteira, TransacaoCambioBean bean) {
         return transacaoCambioService.vender(idCarteira, bean);
+    }
+
+    @Override
+    public TransacaoAtivo ativoComprar(String idCarteira, TransacaoAtivoBean bean) {
+        return transacaoAtivoService.comprar(idCarteira, bean);
+    }
+
+    @Override
+    public TransacaoAtivo ativoVender(String idCarteira, TransacaoAtivoBean bean) {
+        return transacaoAtivoService.vender(idCarteira, bean);
     }
 
 }

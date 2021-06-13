@@ -1,6 +1,7 @@
 package br.espm.poo.carteira;
 
 import br.espm.poo.cambio.common.controller.CambioController;
+import espm.poo11.ativo.common.controller.AtivoController;
 import br.espm.poo.carteira.common.datatype.Carteira;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,13 @@ public class CarteiraService {
     @Autowired
     private TransacaoCambioService transacaoCambioService;
 
+    @Autowired
+    private AtivoController ativoController;
+
+    @Autowired
+    private TransacaoAtivoService transacaoAtivoService;
+
+
     public Carteira create(Carteira c) {
         c.setId(UUID.randomUUID().toString());
         return carteiraRepository.save(new CarteiraModel(c)).to();
@@ -35,7 +43,11 @@ public class CarteiraService {
             c.getTransacoesCambio().forEach(transacaoCambio -> {
                 transacaoCambio.setCotacao(cambioController.cotacao(transacaoCambio.getCotacao().getId()));
             });
-            // c.setTransacoesAtivo(...);
+            
+            c.setTransacoesAtivo(transacaoAtivoService.listByCarteira(c.getId()));
+            c.getTransacoesAtivo().forEach(transacaoAtivo -> {
+                transacaoAtivo.setAcao(ativoController.acao(transacaoAtivo.getAcao().getId()));
+            });
         }
         return c;
     }

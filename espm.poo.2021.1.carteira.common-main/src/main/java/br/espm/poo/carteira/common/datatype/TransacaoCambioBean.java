@@ -2,7 +2,7 @@ package br.espm.poo.carteira.common.datatype;
 
 import java.math.BigDecimal;
 
-public class TransacaoBean {
+public class TransacaoCambioBean {
 
     private String simbolo;
     private BigDecimal qtd;

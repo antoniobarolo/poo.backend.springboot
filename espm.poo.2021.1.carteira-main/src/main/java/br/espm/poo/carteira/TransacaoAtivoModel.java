@@ -1,6 +1,6 @@
 package br.espm.poo.carteira;
 
-import br.espm.poo.ativo.common.datatype.Acao;
+import espm.poo11.ativo.common.datatype.Acao;
 import br.espm.poo.carteira.common.datatype.Carteira;
 import br.espm.poo.carteira.common.datatype.TransacaoAtivo;
 import br.espm.poo.carteira.common.datatype.TransacaoTipo;

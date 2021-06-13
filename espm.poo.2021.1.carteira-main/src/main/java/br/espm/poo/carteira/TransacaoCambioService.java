@@ -4,7 +4,7 @@ import br.espm.poo.cambio.common.controller.CambioController;
 import br.espm.poo.cambio.common.datatype.Cotacao;
 import br.espm.poo.cambio.common.datatype.Moeda;
 import br.espm.poo.carteira.common.datatype.Carteira;
-import br.espm.poo.carteira.common.datatype.TransacaoBean;
+import br.espm.poo.carteira.common.datatype.TransacaoCambioBean;
 import br.espm.poo.carteira.common.datatype.TransacaoCambio;
 import br.espm.poo.carteira.common.datatype.TransacaoTipo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class TransacaoCambioService {
         return l;
     }
 
-    public TransacaoCambio comprar(String idCarteira, TransacaoBean bean) {
+    public TransacaoCambio comprar(String idCarteira, TransacaoCambioBean bean) {
         Carteira c = carteiraService.findBy(idCarteira);
         if (c == null) {
             throw new RuntimeException("Carteira nao existe: " + idCarteira);
@@ -68,7 +68,7 @@ public class TransacaoCambioService {
         return transacaoCambioRepository.save(new TransacaoCambioModel(tc)).to();
     }
 
-    public TransacaoCambio vender(String idCarteira, TransacaoBean bean) {
+    public TransacaoCambio vender(String idCarteira, TransacaoCambioBean bean) {
         Carteira c = carteiraService.findBy(idCarteira);
         if (c == null) {
             throw new RuntimeException("Carteira nao existe: " + idCarteira);

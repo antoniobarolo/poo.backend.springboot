@@ -1,10 +1,10 @@
 package br.espm.poo.carteira;
 
-import br.espm.poo.ativo.common.controller.AtivoController;
-import br.espm.poo.ativo.common.datatype.Acao;
-import br.espm.poo.ativo.common.datatype.Empresa;
+import espm.poo11.ativo.common.controller.AtivoController;
+import espm.poo11.ativo.common.datatype.Acao;
+import espm.poo11.ativo.common.datatype.Empresa;
 import br.espm.poo.carteira.common.datatype.Carteira;
-import br.espm.poo.carteira.common.datatype.TransacaoBean;
+import br.espm.poo.carteira.common.datatype.TransacaoAtivoBean;
 import br.espm.poo.carteira.common.datatype.TransacaoAtivo;
 import br.espm.poo.carteira.common.datatype.TransacaoTipo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,7 @@ public class TransacaoAtivoService {
         return l;
     }
 
-    public TransacaoAtivo comprar(String idCarteira, TransacaoBean bean) {
+    public TransacaoAtivo comprar(String idCarteira, TransacaoAtivoBean bean) {
         Carteira c = carteiraService.findBy(idCarteira);
         if (c == null) {
             throw new RuntimeException("Carteira nao existe: " + idCarteira);
@@ -68,7 +68,7 @@ public class TransacaoAtivoService {
         return transacaoAtivoRepository.save(new TransacaoAtivoModel(tc)).to();
     }
 
-    public TransacaoAtivo vender(String idCarteira, TransacaoBean bean) {
+    public TransacaoAtivo vender(String idCarteira, TransacaoAtivoBean bean) {
         Carteira c = carteiraService.findBy(idCarteira);
         if (c == null) {
             throw new RuntimeException("Carteira nao existe: " + idCarteira);
